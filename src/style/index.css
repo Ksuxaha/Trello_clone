@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&display=swap');
+
+html {
+    background: linear-gradient(77deg, #9393a8, #3ad6ea, #6387a2, #d21478, #c377e0);
+    background-attachment: fixed;
+}
+
+.wrapper {
+    font-family: Briem Hand;
+    font-size: 22px;
+    font-weight: 400;
+    min-width: 0;
+    width: 100%;
+    padding: 10px;
+}
+.wrapper .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1170px;
+    width: 100%;
+    height: 150px;
+    margin: 0 auto;
+    margin-bottom: 22px;
+    border-radius: 33px;
+}
+@media (max-width: 400px) {
+    .wrapper .header {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+.wrapper .header .logo-trello {
+    margin: 22px;
+    width: 20%;
+}
+.wrapper .header .logo-trello img {
+    width: 100%;
+}
+.wrapper .header .search-clock {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+@media (max-width: 400px) {
+    .wrapper .header .search-clock {
+        justify-content: space-evenly;
+    }
+}
+.wrapper .header .search-clock .search-todo {
+    width: 60%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    font-family: Briem Hand;
+    font-size: 26px;
+    font-weight: 400;
+}
+.wrapper .header .search-clock input[type=search]::-webkit-search-cancel-button {
+    display: none;
+}
+.wrapper .header .search-clock .clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 35px;
+    font-size: 24px;
+    width: 25%;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    font-family: Briem Hand;
+    font-size: 22px;
+    font-weight: 400;
+}
+@media (max-width: 400px) {
+    .wrapper .header .search-clock .clock {
+        margin-right: 0;
+    }
+}
+.wrapper .main .list-container {
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 16px;
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px;
+}
+.wrapper .main .list-container .list {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 10px;
+}
+.wrapper .main .list-container .list:hover {
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.wrapper .main .list-container .list .list__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 22px;
+    width: 100%;
+}
+.wrapper .main .list-container .list .list__header .list__header-number {
+    font-family: Briem Hand;
+    font-size: 24px;
+    font-weight: 400;
+}
+.wrapper .main .list-container .list .list-add__header {
+    width: 85%;
+    font-family: Briem Hand;
+    font-size: 22px;
+    font-weight: 400;
+    background-color: rgb(225 241 90);
+    border: 1px solid rgb(225 241 90);
+}
+.wrapper .main .list-container .list .list-progress__header {
+    width: 85%;
+    font-family: Briem Hand;
+    font-size: 22px;
+    font-weight: 400;
+    background-color: rgb(240, 240, 255);
+    border: 1px solid rgb(189, 189, 200);
+}
+.wrapper .main .list-container .list .list-done__header {
+    width: 85%;
+    font-family: Briem Hand;
+    font-size: 22px;
+    font-weight: 400;
+    background-color: rgb(132 135 232);
+    border: 1px solid rgb(132 135 232);
+}
+.wrapper .main .list-container .list .list__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    gap: 15px;
+    min-height: 345px;
+    width: 100%;
+}
+.wrapper .main .list-container .list .list__content .card {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 8px 0;
+    max-width: 100%;
+    min-height: 150px;
+    border-radius: 15px;
+    background-color: azure;
+}
+.wrapper .main .list-container .list .list__content .card .card__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 16px;
+    position: relative;
+}
+.wrapper .main .list-container .list .list__content .card .card__item .title {
+    display: inline-block;
+    word-break: break-all;
+    padding: 8px 0;
+    max-height: 49px;
+    overflow: hidden;
+}
+.wrapper .main .list-container .list .list__content .card .card__item .text {
+    display: inline-block;
+    width: auto;
+    word-break: break-all;
+    line-height: 1.2;
+    padding: 8px 0;
+    max-height: 155px;
+    overflow: hidden;
+}
+.wrapper .main .list-container .list .list__content .card .card__item .divButtons {
+    display: flex;
+    align-items: flex-end;
+}
+.wrapper .main .list-container .list .list__content .card .card__item .card-item__btn {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 4px;
+}
+.wrapper .main .list-container .list .list__content .card .card__item .card-item__btn:active {
+    box-shadow: 0px 0px 5px 0px rgb(129, 129, 129) inset;
+}
+.wrapper .main .list-container .list .list__content .card .card__item .card-item__btn:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.wrapper .main .list-container .list .list__content .card .card__item .card-item__btn-apply {
+    padding: 13px 9px;
+    font-size: 20px;
+    right: 0;
+}
+.wrapper .main .list-container .list .list__content .list-add__card {
+    background-color: rgb(152, 223, 138);
+    border: 1px solid rgb(106, 156, 96);
+}
+.wrapper .main .list-container .list .list__content .list-progress__card {
+    background-color: rgb(240, 240, 255);
+    border: 1px solid rgb(189, 189, 200);
+}
+.wrapper .main .list-container .list .list__content .list-done__card {
+    background-color: rgb(135, 206, 250);
+    border: 1px solid rgb(105, 160, 195);
+}
+.wrapper .main .list-container .list .list-progress__content {
+    min-height: 395px;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+}
+.wrapper .main .list-container .list .list__footer {
+    width: 100%;
+    border-radius: 10px;
+}
+.wrapper .main .list-container .list .list__footer button {
+    font-weight: 600;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+}
+.wrapper .main .list-container .list .list-add__footer button {
+    font-family: Briem Hand;
+    font-size: 22px;
+    font-weight: 400;
+    background-color: rgb(225 241 90);
+    border: 1px solid rgb(225 241 90);
+}
+.wrapper .main .list-container .list .list-add__footer button:hover {
+    background-color: rgb(134, 197, 122);
+}
+.wrapper .main .list-container .list .list-add__footer button:active {
+    box-shadow: 0px 0px 10px 0px rgb(106, 156, 96) inset;
+}
+.wrapper .main .list-container .list .list-done__footer button {
+    font-family: Briem Hand;
+    font-size: 22px;
+    font-weight: 400;
+    background-color:rgb(132 135 232);
+    border: 1px solid rgb(132 135 232);
+}
+.wrapper .main .list-container .list .list-done__footer button:hover {
+    background-color: rgb(126, 191, 232);
+}
+.wrapper .main .list-container .list .list-done__footer button:active {
+    box-shadow: 0px 0px 10px 0px rgb(88, 134, 163) inset;
+}
+.wrapper .main .list-container .list-progress {
+    border-radius: 10px;
+}
+
+.sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+}
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.frosted-glass {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 1rem 0 rgba(101, 39, 39, 0.2);
+    border-radius: 3px;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+}
+
+.frosted-glass:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: inset 0 0 2000px rgba(241, 241, 241, 0.5);
+    filter: blur(10px);
+}
+
+@media only screen and (max-width: 959px) {
+    .wrapper .main .list-container .list .list__content .card .card__item .title {
+        max-height: 40px;
+    }
+    .wrapper .main .list-container .list .list__content .card .card__item .text {
+        font-size: 15px;
+        max-height: 170px;
+    }
+    .wrapper .main .list-container .list .list__content .card .card__item .divButtons {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        padding: 0;
+    }
+    .wrapper .header {
+        margin: 22.4px auto 88px;
+        width: 95%;
+    }
+    .wrapper .header .logo-trello {
+        margin: 22.4px;
+        width: 30%;
+    }
+    .wrapper .header .logo-trello img {
+        width: 100%;
+    }
+    .wrapper .header .clock {
+        width: calc(10% + 40px);
+    }
+    .wrapper .main .list-container .list {
+        max-width: 60%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .wrapper .main .list-container .list .list__content .card .card__item .divButtons {
+        flex-direction: row;
+        gap: 0;
+    }
+    .wrapper .main .list-container .list .list__content .card .card__item .text {
+        width: auto;
+    }
+    .wrapper .main .list-container .swiper-pagination {
+        position: absolute;
+        bottom: calc(100% - 250px);
+    }
+    .wrapper .main .list-container .swiper-pagination .swiper-pagination-bullet {
+        background-color: inherit;
+        color: white;
+        width: 157px;
+        height: 45.6px;
+        font-size: 22.5px;
+        margin: 16px;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .wrapper .header {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .wrapper .header .logo-trello {
+        margin: 0;
+        width: 40%;
+    }
+    .wrapper .header .search-clock {
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .wrapper .header .search-clock .clock {
+        margin: 0;
+        width: 20%;
+    }
+    .wrapper .header .search-clock .search-todo {
+        width: 70%;
+    }
+    .wrapper .main .list-container .list {
+        max-width: 70%;
+    }
+    .wrapper .main .list-container .list .list__content .card .card__item .divButtons {
+        flex-direction: column;
+        gap: 4px;
+    }
+    .wrapper .main .list-container .swiper-pagination {
+        position: absolute;
+        bottom: calc(100% - 250px);
+    }
+    .wrapper .main .list-container .swiper-pagination .swiper-pagination-bullet {
+        width:105.6px;
+        height: 48px;
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 363px) {
+    .wrapper .header .logo-trello {
+        width: 50%;
+    }
+    .wrapper .header .search-clock .clock {
+        width: 30%;
+    }
+    .wrapper .header .search-clock .search-todo {
+        width: 60%;
+    }
+    .wrapper .main .list-container .list {
+        max-width: 83%;
+    }
+    .wrapper .main .list-container .swiper-pagination {
+        position: absolute;
+        bottom: calc(100% - 250px);
+    }
+    .wrapper .main .list-container .swiper-pagination .swiper-pagination-bullet {
+        width: 73.5px;
+        margin: 11px;
+    }
+}
+@media only screen and (max-width: 253px) {
+    .wrapper .main .list-container .list {
+        max-width: 90%;
+    }
+    .wrapper .main .list-container .swiper-pagination {
+        position: absolute;
+        bottom: calc(100% - 250px);
+    }
+    .wrapper .main .list-container .swiper-pagination .swiper-pagination-bullet {
+        margin: 0;
+    }
+}
