@@ -1,9 +1,14 @@
 import { userName } from "./index.js";
 
-export async function getUserName () {
+export const getUserName  = async   ()  => {
     const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
     const users = await response.json();
-    for(let i = 0; i < 10; i++) {
-        userName.push(users[i].name.split(' ')[0]);
+
+
+    for(let user of users) {
+        userName.push(user.name.split(' ')[0]);
+
     }
 }
+
+getUserName();

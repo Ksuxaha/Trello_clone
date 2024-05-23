@@ -1,5 +1,7 @@
-import { listDoneContent, listContent, listProgress, listAddCounter, listProgressCounter, listDoneCounter, todos, windowDescription, backdropOn, backdropOff, descriptionTitle, descriptionText, confirmDescriptionBtn, user, flag} from "./index.js"
-import {setName} from "./localstorage.js";
+import { listDoneContent, listContent, listProgress,
+    listAddCounter, listProgressCounter, listDoneCounter, todos, windowDescription,
+    descriptionTitle, descriptionText, confirmDescriptionBtn, user, flag} from "./index.js"
+
 import {windowWarning, confirmWarningBtn, warningText} from "./index.js"
 
 export const createCard = () => {
@@ -38,7 +40,7 @@ export const createCard = () => {
 
     const applyBtn = document.createElement('button')
     applyBtn.classList.add('card-item__btn', 'card-item__btn-apply')
-    applyBtn.innerHTML = '>'
+    applyBtn.innerHTML = '=>'
 
     const spanUser = document.createElement('span')
     spanUser.classList.add('name')
@@ -65,27 +67,34 @@ export const createCard = () => {
     comleteBtn.classList.add('card-item__btn', 'comlete-btn')
     comleteBtn.innerHTML = 'COMPLETE'
 
-    const todo = {};
-    todo.id = Date.now()
-    todo.user = spanUser.innerHTML
-    todo.title = spanTitle.innerHTML
-    todo.text = spanDescription.innerHTML
-    todo.time = divDate.innerHTML
-    todo.status = "TODO"
-    todos.push(todo);
-    console.log(todos)
+    const todo = {
+        id : Date.now(),
+        user : spanUser.innerHTML,
+        title : spanTitle.innerHTML,
+        text : spanDescription.innerHTML,
+        time : divDate.innerHTML,
+        status : "TODO",
+
+    };
+    todos.push(todo)
+
 
     document.addEventListener('click', (event) => {
         if (event.target == editBtn) {
             const todoParent = event.target.closest('.list-add__card');
-            let indexTodoParent = Array.from(todoParent.parentElement.children).indexOf(todoParent);
+            const indexTodoParent = Array.from(todoParent.parentElement.children).indexOf(todoParent);
             windowDescription.style.display = 'flex'
             descriptionText.value = spanDescription.innerHTML
             descriptionTitle.value = spanTitle.innerHTML
             user.value = spanUser.innerHTML
             flag.key = false
-            let confirmDescriptionBtnEvent = (event) => {
-                if (event.target === confirmDescriptionBtn && descriptionTitle.value.trim() !== '' && descriptionText.value.trim() !== '' && user.value !== '') {
+
+            const confirmDescriptionBtnEvent = (event) => {
+                if (event.target === confirmDescriptionBtn
+                    && descriptionTitle.value.trim() !== ''
+                    && descriptionText.value.trim() !== ''
+                    && user.value !== '') {
+
                     if(todos[indexTodoParent].id) {
                         windowDescription.style.display = 'none';
                         todos[indexTodoParent].title = descriptionTitle.value;
@@ -94,7 +103,6 @@ export const createCard = () => {
                         todo.title = todos[indexTodoParent].title;
                         todo.text = todos[indexTodoParent].text;
                         todo.user = todos[indexTodoParent].user;
-                        setName();
                         spanTitle.innerHTML = descriptionTitle.value;
                         spanDescription.innerHTML = descriptionText.value;
                         spanUser.innerHTML = user.value;
@@ -103,7 +111,7 @@ export const createCard = () => {
                         descriptionText.value = '';
                         user.value = '';
                     }
-                    document.removeEventListener('click', confirmDescriptionBtnEvent);
+
                 }
             }
             document.addEventListener('click', confirmDescriptionBtnEvent);
@@ -116,8 +124,6 @@ export const createCard = () => {
                 listProgressCounter.innerHTML = ++listProgressCounter.innerHTML;
               
                 todo.status = 'In progress'
-
-                setName()   
               
                 card.style.backgroundColor = 'rgb(240, 240, 255)'
                 applyBtn.remove()
@@ -128,7 +134,7 @@ export const createCard = () => {
             } else {
                 windowWarning.style.display = 'flex'
                 warningText.innerHTML = 'Сначала нужно выполнить текущие дела'
-                confirmWarningBtn.hidden = true
+                confirmWarningBtn.hidden = false
             }
         }
         if (event.target == deleteBtn) {
@@ -140,7 +146,6 @@ export const createCard = () => {
             }
             card.remove()
             todos.splice(todos.indexOf(todo), 1)
-            setName()
         }
         if (event.target == backBtn) {
             listProgressCounter.innerHTML = --listProgressCounter.innerHTML;
@@ -151,9 +156,7 @@ export const createCard = () => {
             backBtn.remove()
             comleteBtn.remove()
             listContent.append(card)
-
             todo.status = 'TODO'
-            setName()
         }
         if (event.target == comleteBtn) {
             listProgressCounter.innerHTML = --listProgressCounter.innerHTML;
@@ -163,10 +166,8 @@ export const createCard = () => {
             comleteBtn.remove()
             divButtons.append(deleteBtn)
             listDoneContent.append(card)
-
             todo.status = 'Done'
-            setName()
         }
     })
-    setName()
+
 }

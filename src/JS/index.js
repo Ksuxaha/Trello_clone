@@ -2,10 +2,6 @@ import {clock} from './clock.js';
 import {inputSearch, search} from "./search.js";
 import {getUserName} from "./users.js";
 import {createCard} from './cards.js';
-import {setName, getName} from "./localstorage.js";
-
-
-export const currentTime = document.querySelector('.clock');
 
 clock.innerHTML = clock()
 
@@ -20,12 +16,12 @@ export let todos = [];
 
 
 export const listContent = document.querySelector('.list-add__content')
-const addContentBtn = document.querySelector('.add-btn')
+export const addContentBtn = document.querySelector('.add-btn')
 
 export const listProgress = document.querySelector('.list-progress__content')
 
 export const listDoneContent = document.querySelector('.list-done__content')
-const deleteAllBtn = document.querySelector('.delete-all-btn')
+export const deleteAllBtn = document.querySelector('.delete-all-btn')
 
 
 export const windowDescription = document.querySelector('.window-description')
@@ -43,8 +39,8 @@ export const confirmWarningBtn = document.querySelector('.warning-confirm-btn')
 export const warningText = document.querySelector('.warning__text')
 
 
-export const backdropOn = () => {};
-export const backdropOff = ()  => {};
+// export const backdropOn = () => {};
+// export const backdropOff = ()  => {};
 
 document.addEventListener('click', ({target}) => {
     if (target == addContentBtn) {
@@ -73,6 +69,7 @@ document.addEventListener('click', ({target}) => {
         && user.value !== '') {
 
         windowDescription.style.display = 'none'
+
         if (flag.key == true) {
             listAddCounter.innerHTML = ++listAddCounter.innerHTML;
             createCard()
@@ -83,16 +80,14 @@ document.addEventListener('click', ({target}) => {
     }
     if (target == cancelWarningBtn) {
         windowWarning.style.display = 'none'
-        warningText.innerHTML = ''
-        confirmWarningBtn.hidden = false
+
     }
     if (target == confirmWarningBtn) {
         listDoneContent.innerHTML = ''
         listDoneCounter.innerHTML = 0;
 
-        let array = todos.filter(value => value.status !== 'Done')
+        const array = todos.filter(value => value.status !== 'Done')
         todos = array
-        setName()
 
         windowWarning.style.display = 'none'
 
@@ -103,12 +98,12 @@ document.addEventListener('click', ({target}) => {
 })
 
 export let userName = [];
-
 await getUserName();
 
 for (let i = 0; i < userName.length; i++) {
-    let newOption = document.createElement('option');
-    newOption.classList.add(`user__${[i]}`);
-    newOption.innerHTML = userName[i];
-    user.appendChild(newOption);
+    const listUsers = document.createElement('option');
+
+    listUsers.innerHTML = userName[i];
+    user.appendChild(listUsers);
 };
+
